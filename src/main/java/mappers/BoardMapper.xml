@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO board
+		(bnum,bcategory,title,bdate,content,cname
+			<if test="boardfile != null">
+			, boardfile,b_fsize
+			</if>
+		)
+		VALUES(
+		seq_bnum.nextval,#{bcategory},#{title},sysdate,#{content},#{cname }
+			<if test="boardfile != null">
+			, #{boardfile},#{b_fsize}
+			</if>
+		)
+	</insert>
+
+	<select id="getBoardList" resultType="board">
+		<![CDATA[
+		SELECT * FROM board ORDER BY bnum DESC
+		]]>
+	</select>
+
+	<update id="updateBoard" parameterType="board">
+		<![CDATA[
+		UPDATE board SET 
+		bdate = sysdate,
+		cname = #{cname},
+		title = #{title},
+		content = #{content}
+		WHERE bnum = #{bnum}
+		]]>
+	</update>
+
+	<delete id="deleteBoard" parameterType="board">
+		<![CDATA[
+		DELETE board
+		WHERE bnum = #{bnum}
+		]]>
+	</delete>
+
+	<select id="getBoard" parameterType="board" resultType="board">
+		<![CDATA[
+		SELECT *
+		FROM board
+		WHERE bnum = #{bnum}
+		]]>
+	</select>
+
+
+</mapper>

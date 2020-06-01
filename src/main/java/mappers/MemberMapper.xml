@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+<insert id="userInsert" parameterType="member">
+		INSERT INTO client(cnum,id,password,name,tel,addr,
+		jumin,point,regdate,client_num)
+		VALUES(seq_cnum.nextval,#{id},#{password},#{name},#{tel},#{addr},
+		#{jumin},#{point},sysdate,seq_client_num.nextval)
+</insert>
+
+<select id="idCheck" parameterType="member" resultType="member">
+	SELECT * FROM client WHERE id=#{id} 
+	<if test="password != null">
+		AND password=#{password}
+	</if>
+	
+</select>
+
+
+</mapper>

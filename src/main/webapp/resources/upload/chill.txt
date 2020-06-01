@@ -1,0 +1,307 @@
+/* 회원 */
+CREATE TABLE TABLE (
+);
+
+COMMENT ON TABLE TABLE IS '회원';
+
+/* 회원      */
+CREATE TABLE client (
+	cnum NUMBER NOT NULL, /* cnum */
+	id VARCHAR2(12), /* id */
+	password VARCHAR2(20), /* password */
+	name VARCHAR2(10), /* name */
+	tel VARCHAR2(11), /* tel */
+	addr VARCHAR2(100), /* addr */
+	jumin VARCHAR2(14), /* 주민번호 */
+	point NUMBER, /* 포인트 */
+	regdate DATE, /* 가입일 */
+	client_num VARCHAR2(10) /* 회원번호 */
+);
+
+COMMENT ON TABLE client IS '회원     ';
+
+COMMENT ON COLUMN client.cnum IS 'cnum';
+
+COMMENT ON COLUMN client.id IS 'id';
+
+COMMENT ON COLUMN client.password IS 'password';
+
+COMMENT ON COLUMN client.name IS 'name';
+
+COMMENT ON COLUMN client.tel IS 'tel';
+
+COMMENT ON COLUMN client.addr IS 'addr';
+
+COMMENT ON COLUMN client.jumin IS '주민번호';
+
+COMMENT ON COLUMN client.point IS '포인트';
+
+COMMENT ON COLUMN client.regdate IS '가입일';
+
+COMMENT ON COLUMN client.client_num IS '회원번호';
+
+CREATE UNIQUE INDEX PK_client
+	ON client (
+		cnum ASC
+	);
+
+ALTER TABLE client
+	ADD
+		CONSTRAINT PK_client
+		PRIMARY KEY (
+			cnum
+		);
+
+/* 비회원 */
+CREATE TABLE TABLE3 (
+	COL2 <지정 되지 않음> NOT NULL, /* 비회원번호 */
+	COL <지정 되지 않음> /* tel */
+);
+
+COMMENT ON TABLE TABLE3 IS '비회원';
+
+COMMENT ON COLUMN TABLE3.COL2 IS '비회원번호';
+
+COMMENT ON COLUMN TABLE3.COL IS 'tel';
+
+CREATE UNIQUE INDEX PK_TABLE3
+	ON TABLE3 (
+		COL2 ASC
+	);
+
+ALTER TABLE TABLE3
+	ADD
+		CONSTRAINT PK_TABLE3
+		PRIMARY KEY (
+			COL2
+		);
+
+/* 장바구니 */
+CREATE TABLE TABLE4 (
+	COL <지정 되지 않음> /* 수량 */
+);
+
+COMMENT ON TABLE TABLE4 IS '장바구니';
+
+COMMENT ON COLUMN TABLE4.COL IS '수량';
+
+/* 게시판 */
+CREATE TABLE board (
+	bnum NUMBER NOT NULL, /* 글번호 */
+	content VARCHAR2(200), /* 내용 */
+	title VARCHAR2(50), /* 제목 */
+	gnum NUMBER, /* 그룹번호 */
+	bdate DATE, /* 날짜 */
+	cnum NUMBER /* cnum */
+);
+
+COMMENT ON TABLE board IS '게시판';
+
+COMMENT ON COLUMN board.bnum IS '글번호';
+
+COMMENT ON COLUMN board.content IS '내용';
+
+COMMENT ON COLUMN board.title IS '제목';
+
+COMMENT ON COLUMN board.gnum IS '그룹번호';
+
+COMMENT ON COLUMN board.bdate IS '날짜';
+
+COMMENT ON COLUMN board.cnum IS 'cnum';
+
+CREATE UNIQUE INDEX PK_board
+	ON board (
+		bnum ASC
+	);
+
+ALTER TABLE board
+	ADD
+		CONSTRAINT PK_board
+		PRIMARY KEY (
+			bnum
+		);
+
+/* 배송정보 */
+CREATE TABLE TABLE6 (
+	COL <지정 되지 않음> /* 리스트 */
+);
+
+COMMENT ON TABLE TABLE6 IS '배송정보';
+
+COMMENT ON COLUMN TABLE6.COL IS '리스트';
+
+/* 입점 */
+CREATE TABLE store_list (
+	store_num NUMBER NOT NULL, /* 쇼핑몰번호 */
+	store_name VARCHAR2(20) /* 쇼핑몰명 */
+);
+
+COMMENT ON TABLE store_list IS '입점';
+
+COMMENT ON COLUMN store_list.store_num IS '쇼핑몰번호';
+
+COMMENT ON COLUMN store_list.store_name IS '쇼핑몰명';
+
+CREATE UNIQUE INDEX PK_store_list
+	ON store_list (
+		store_num ASC
+	);
+
+ALTER TABLE store_list
+	ADD
+		CONSTRAINT PK_store_list
+		PRIMARY KEY (
+			store_num
+		);
+
+/* 판매이력 */
+CREATE TABLE sold_history (
+	temp NUMBER NOT NULL, /* temp */
+	sold_date DATE, /* 판매일 */
+	index NUMBER, /* index */
+	cnum NUMBER /* cnum */
+);
+
+COMMENT ON TABLE sold_history IS '판매이력';
+
+COMMENT ON COLUMN sold_history.temp IS 'temp';
+
+COMMENT ON COLUMN sold_history.sold_date IS '판매일';
+
+COMMENT ON COLUMN sold_history.index IS 'index';
+
+COMMENT ON COLUMN sold_history.cnum IS 'cnum';
+
+CREATE UNIQUE INDEX PK_sold_history
+	ON sold_history (
+		temp ASC
+	);
+
+ALTER TABLE sold_history
+	ADD
+		CONSTRAINT PK_sold_history
+		PRIMARY KEY (
+			temp
+		);
+
+/* 상품 */
+CREATE TABLE item (
+	index NUMBER NOT NULL, /* index */
+	item_num NUMBER, /* 상품번호 */
+	item_name VARCHAR2(20), /* 상품명 */
+	item_color VARCHAR2(10) NOT NULL, /* 상품색상 */
+	item_image VARCHAR2(50), /* 상품이미지 */
+	item_price NUMBER, /* 상품가격 */
+	item_content VARCHAR2(50), /* 상품설명 */
+	item_size VARCHAR2(5), /* 상품사이즈 */
+	category_num NUMBER, /* 카테고리번호 */
+	store_num NUMBER /* 쇼핑몰번호 */
+);
+
+COMMENT ON TABLE item IS '상품';
+
+COMMENT ON COLUMN item.index IS 'index';
+
+COMMENT ON COLUMN item.item_num IS '상품번호';
+
+COMMENT ON COLUMN item.item_name IS '상품명';
+
+COMMENT ON COLUMN item.item_color IS '상품색상';
+
+COMMENT ON COLUMN item.item_image IS '상품이미지';
+
+COMMENT ON COLUMN item.item_price IS '상품가격';
+
+COMMENT ON COLUMN item.item_content IS '상품설명';
+
+COMMENT ON COLUMN item.item_size IS '상품사이즈';
+
+COMMENT ON COLUMN item.category_num IS '카테고리번호';
+
+COMMENT ON COLUMN item.store_num IS '쇼핑몰번호';
+
+CREATE UNIQUE INDEX PK_item
+	ON item (
+		index ASC
+	);
+
+ALTER TABLE item
+	ADD
+		CONSTRAINT PK_item
+		PRIMARY KEY (
+			index
+		);
+
+/* 카테고리 */
+CREATE TABLE category (
+	category_num NUMBER NOT NULL, /* 카테고리번호 */
+	category_name VARCHAR2(20) /* 카테고리명 */
+);
+
+COMMENT ON TABLE category IS '카테고리';
+
+COMMENT ON COLUMN category.category_num IS '카테고리번호';
+
+COMMENT ON COLUMN category.category_name IS '카테고리명';
+
+CREATE UNIQUE INDEX PK_category
+	ON category (
+		category_num ASC
+	);
+
+ALTER TABLE category
+	ADD
+		CONSTRAINT PK_category
+		PRIMARY KEY (
+			category_num
+		);
+
+ALTER TABLE board
+	ADD
+		CONSTRAINT FK_client_TO_board
+		FOREIGN KEY (
+			cnum
+		)
+		REFERENCES client (
+			cnum
+		);
+
+ALTER TABLE sold_history
+	ADD
+		CONSTRAINT FK_item_TO_sold_history
+		FOREIGN KEY (
+			index
+		)
+		REFERENCES item (
+			index
+		);
+
+ALTER TABLE sold_history
+	ADD
+		CONSTRAINT FK_client_TO_sold_history
+		FOREIGN KEY (
+			cnum
+		)
+		REFERENCES client (
+			cnum
+		);
+
+ALTER TABLE item
+	ADD
+		CONSTRAINT FK_category_TO_item
+		FOREIGN KEY (
+			category_num
+		)
+		REFERENCES category (
+			category_num
+		);
+
+ALTER TABLE item
+	ADD
+		CONSTRAINT FK_store_list_TO_item
+		FOREIGN KEY (
+			store_num
+		)
+		REFERENCES store_list (
+			store_num
+		);
