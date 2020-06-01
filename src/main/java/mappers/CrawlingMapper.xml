@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="CrawlingDao">
-	<select id="selectList" parameterType="CrawVO" resultType="CrawVO">
+	<select id="selectList" resultType="CrawVO">
 		select * from item
+	</select>
+	<select id="selectStore" resultType="CrawVO">
+		select * from store_list
 	</select>
 </mapper>

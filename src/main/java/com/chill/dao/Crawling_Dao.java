@@ -15,7 +15,10 @@ public class Crawling_Dao {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<CrawVO> CrawlingList() {
+	public List<CrawVO> CrawlingList(CrawVO vo) {
 		return mybatis.selectList("CrawlingDao.selectList");
+	}
+	public List<CrawVO> storeList(CrawVO vo){
+		return mybatis.selectList("CrawlingDao.selectStore");
 	}
 }

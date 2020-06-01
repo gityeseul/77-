@@ -14,7 +14,10 @@ public class Crawling_Serivce {
 	@Autowired
 	private Crawling_Dao dao;
 	
-	public List<CrawVO> CrawlingList() {
-		return dao.CrawlingList();
+	public List<CrawVO> CrawlingList(CrawVO vo) {
+		return dao.CrawlingList(vo);
+	}
+	public List<CrawVO> storeList(CrawVO vo){
+		return dao.storeList(vo);
 	}
 }
