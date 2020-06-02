@@ -1,5 +1,8 @@
 package com.chill.controller;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +25,6 @@ public class Crawling_Controller {
 	
 	@RequestMapping(value="/Toplist.do")
 	public String crawlingTopList(CrawVO vo,Model model) {
-		System.out.println("controller 수행");
 		model.addAttribute("Toplist",srv.CrawlingTopList(vo));
 		return "01top";
 	}
