@@ -5,14 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.chill.domain.BoardVO;
+import com.chill.domain.CartVO;
 import com.chill.service.BoardService;
 
 
@@ -34,17 +40,18 @@ import com.chill.service.BoardService;
 @Controller
 @RequestMapping("/")
 @SessionAttributes({"cart"})
-public class HomeController {	
+public class CartController {	
 	
 //1.세션에 저장되어 있는 cart값 호출
 	@ResponseBody
 	@RequestMapping(value = "main/resources/shoping-cart", method = RequestMethod.POST)
-	public void addCart(CartListVO cart, HttpSession session) throws Exception {
+	public void addCart(CartVO cart, HttpSession session) throws Exception {
 	 
 	CartVO cartvo = (CartVO)session.getAttribute("cartvo");
-	 cart.setItem_id(cartvo.getItem_id());
-	 service.addCart(cart);
+	 cart.setProduct_id(cartvo.getProduct_id());
+	 //service.addCart(cart);	예슬이 수정 할 부분
 	}
+}
 
 /*
  * @Controller public class CartController {

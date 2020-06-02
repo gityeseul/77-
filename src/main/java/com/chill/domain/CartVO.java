@@ -8,10 +8,10 @@ public class CartVO {
     private String item_image;
     private int amount;
 
-    public String getItem-image() {
+    public String getItem_image() {
         return item_image;
     }
-    public void setItem-image(String item_image) {
+    public void setItem_image(String item_image) {
         this.item_image = item_image;
     }
     public int getProduct_id() {
@@ -20,8 +20,8 @@ public class CartVO {
     public void setProduct_id(int product_id) {
         this.product_id = product_id;
     }
-    public String getItem_name {
-        return item_name;
+    public String getItem_name() {
+    	return item_name;
     }
     public void setItem_name(String item_name) {
         this.item_name = item_name;

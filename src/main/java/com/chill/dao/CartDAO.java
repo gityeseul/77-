@@ -3,10 +3,11 @@ package com.chill.dao;
 import java.util.List;
 
 import com.chill.domain.CartVO;
+import com.chill.domain.MemberVO;
 
 	public interface CartDAO {
 		//1.장바구니 추가
-	    List<CartDTO> cartMoney();
+	    List<CartDAO> cartMoney();
 	    void insert(CartDAO dao); 
 	    //2.장바구니 목록
 	    List<CartDAO> listCart(String userid); 
@@ -18,8 +19,9 @@ import com.chill.domain.CartVO;
 	    //5.장바구니 금액 합계
 	    int sumMoney(String userid); 
 	    //6.장바구니 수정 
-	    void updateCart(CartDTO dto); 
-	    void modifyCart(CartDTO dto);
+	    void updateCart(CartDAO dto); 
+	    void modifyCart(CartDAO dto);
+	    public CartVO insert(MemberVO vo);
 	    
 
 }
