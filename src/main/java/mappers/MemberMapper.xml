@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <insert id="userInsert" parameterType="member">
 		INSERT INTO client(cnum,id,password,name,tel,addr,
-		jumin,point,regdate,client_num)
+		jumin,regdate,client_num)
 		VALUES(seq_cnum.nextval,#{id},#{password},#{name},#{tel},#{addr},
-		#{jumin},#{point},sysdate,seq_client_num.nextval)
+		#{jumin},sysdate,seq_client_num.nextval)
 </insert>
 
 <select id="idCheck" parameterType="member" resultType="member">
