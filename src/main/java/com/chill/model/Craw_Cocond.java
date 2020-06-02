@@ -60,10 +60,10 @@ public class Craw_Cocond {
 			count++;
 			//System.out.println(count+":"+temp.next().attr("id"));
 			Element data =temp.next();
-			//System.out.println(count+":"+data.select(".link>img").attr("src"));
-			//System.out.println(count+":"+data.select(".description a span:nth-child(2)").html());
-			//System.out.println(count+":"+data.select(".product_price span:nth-child(2)").text());
-			//System.out.println(count+":"+data.select(".simple_desc span:nth-child(2)").text());
+			System.out.println(count+":"+data.select(".link>img").attr("src"));
+			System.out.println(count+":"+data.select(".description a span:nth-child(2)").html());
+			System.out.println(count+":"+data.select(".product_price span:nth-child(2)").text());
+			System.out.println(count+":"+data.select(".simple_desc span:nth-child(2)").text());
 			System.out.println(count+":"+data.select(".summary_desc span:nth-child(2)").text());
 			
 			
