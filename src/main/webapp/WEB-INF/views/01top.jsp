@@ -1,6 +1,12 @@
+<%@page import="com.chill.domain.CrawVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
+<%
+	List<CrawVO> list =(List<CrawVO>)request.getAttribute("Toplist");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -532,39 +538,49 @@
 				<!-- 2020/06/02 경호 수정 -->
 				<!-- 수정 사항 : DB 상품 끌어오기 -->
 				<!-- 문제점 : 같은상품(컬러가 다른경우) 합치기 -->
+				<c:set var="prevVal" value="0"/>
 				<c:forEach items="${Toplist}" var="list">
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="${list.item_image }" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									${list.item_name }
-								</a>
-
-								<span class="stext-105 cl3">
-									${list.item_price }
-								</span>
+				<c:set var="currVal" value="${list.item_num }"/>
+				<c:choose>
+					<c:when test="${prevVal eq currVal }">
+						
+					</c:when>
+					<c:otherwise>
+						<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+							<!-- Block2 -->
+							<div class="block2">
+								<div class="block2-pic hov-img0">
+									<img src="${list.item_image }" alt="IMG-PRODUCT">
+		
+									<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+										Quick View
+									</a>
+								</div>
+		
+								<div class="block2-txt flex-w flex-t p-t-14">
+									<div class="block2-txt-child1 flex-col-l ">
+										<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											${list.item_name }
+										</a>
+		
+										<span class="stext-105 cl3">
+											${list.item_price }
+										</span>
+									</div>
+		
+									<div class="block2-txt-child2 flex-r p-t-3">
+										<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+											<img class="icon-heart1 dis-block trans-04" src="resources/images/icons/icon-heart-01.png" alt="ICON">
+											<img class="icon-heart2 dis-block trans-04 ab-t-l" src="resources/images/icons/icon-heart-02.png" alt="ICON">
+										</a>
+									</div>
+								</div>
 							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="resources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="resources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
 						</div>
-					</div>
-				</div>
+				</c:otherwise>
+				</c:choose>
+				
+				<c:set var="prevVal" value="${list.item_num }"/>
 				</c:forEach>
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
