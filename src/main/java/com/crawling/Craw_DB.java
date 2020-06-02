@@ -25,8 +25,9 @@ public class Craw_DB {
 			for(CrawVO vo : list) {
 				System.out.println(vo.getItem_color());
 				if(flag) num=str[1];
-				sql = "insert into item(item_index,item_num,item_name,item_color,item_image,item_price,item_content,item_size) "
-						+ " values(seq_item_index.nextval, "+num+" ,?,?,?,?,?,?) ";
+				sql = "insert into item(item_index,item_num,item_name,item_color,item_image,item_price,item_content,item_size "
+						+ " ,category_num,store_num)"
+						+ " values(seq_item_index.nextval, "+num+" ,?,?,?,?,?,?,3,41) ";
 				ps = con.prepareStatement(sql);
 				ps.setString(1, vo.getItem_name());
 				ps.setString(2, vo.getItem_color());

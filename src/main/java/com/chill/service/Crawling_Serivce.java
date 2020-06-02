@@ -20,4 +20,7 @@ public class Crawling_Serivce {
 	public List<CrawVO> storeList(CrawVO vo){
 		return dao.storeList(vo);
 	}
+	public List<CrawVO> CrawlingTopList(CrawVO vo){
+		return dao.CrawlingTopList(vo);
+	}
 }

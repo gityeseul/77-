@@ -10,7 +10,7 @@ public class Craw_BluePops {
 
 	public static void main(String[] args) {
 
-		String url = "https://bluepops.co.kr/category/swim-wear-top/638/"; //크롤링할 url지정
+		String url = "https://bluepops.co.kr/category/summer-acc/641/"; //크롤링할 url지정
 		Document doc = null;        //Document에는 페이지의 전체 소스가 저장된다
 		Craw_DB db = null;
 		ArrayList<CrawVO> list = null;

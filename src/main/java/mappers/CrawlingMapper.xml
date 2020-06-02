@@ -8,4 +8,8 @@
 	<select id="selectStore" resultType="CrawVO">
 		select * from store_list
 	</select>
+	
+	<select id="CrawlingTopList" resultType="CrawVO">
+		select * from item where category_num=2
+	</select>
 </mapper>

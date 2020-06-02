@@ -6,11 +6,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-public class Craw_Cocond {
+public class Mimibabi {
 
 	public static void main(String[] args) {
 
-		String url = "http://cocond.com/product/list.html?cate_no=30&page=2";
+		String url = "http://mimibabi.com/product/list.html?cate_no=81";
 		Document doc = null;        //Document에는 페이지의 전체 소스가 저장된다
 		
 		try {
@@ -61,21 +61,22 @@ public class Craw_Cocond {
 			count++;
 			Element data =temp.next();
 			//이미지 링크
-			String itemImg_link=data.select(".link>img").attr("src");
+			String itemImg_link=data.select(".prdImg img").attr("src");
 			//이름
 			String itemName=data.select(".description a span:nth-child(2)").html();
 			//가격
-			String price=data.select(".product_price span:nth-child(2)").text().replaceAll(",","");
-			String itemPrice = price.substring(0,data.select(".product_price span:nth-child(2)").text().length()-2);
-			
+			String price=data.select(".description li:eq(0) span:nth-child(2)").text().replaceAll(",","");
+			String itemPrice = price.substring(0,price.length()-1);
+
 			//설명
-			String itemContent=data.select(".simple_desc span:nth-child(2)").text();
+			String itemContent=data.select(".description li:eq(3) span:nth-child(2)").text();
 			//사이즈
-			String itemSize=data.select(".summary_desc span:nth-child(2)").text();
+			String itemSize=data.select(".description li:eq(1) span:nth-child(2)").text();
+
+
 			//색상
-			
-			
-			for(int i=0; i<=data.select(".colorList span").size();i++) {
+
+			for(int i=1; i<=data.select(".color .chips").size();i++) {
 				CrawVO vo = new CrawVO();
 				vo.setItem_size(itemSize);
 				vo.setItem_price(Integer.parseInt(itemPrice));
@@ -83,9 +84,8 @@ public class Craw_Cocond {
 				vo.setItem_image(itemImg_link);
 				vo.setItem_content(itemContent);
 				if(i!=0) {
-					String color = data.select(".colorList span:nth-child("+i+")").attr("style");
-					String itemColor=color.substring(color.length()-7, color.length());
-					vo.setItem_color(itemColor);
+					String color = data.select(".color .chips:nth-child("+i+")").attr("title");
+					vo.setItem_color(color);
 				}
 				
 				list.add(vo);

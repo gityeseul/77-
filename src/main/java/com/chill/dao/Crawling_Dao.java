@@ -21,4 +21,7 @@ public class Crawling_Dao {
 	public List<CrawVO> storeList(CrawVO vo){
 		return mybatis.selectList("CrawlingDao.selectStore");
 	}
+	public List<CrawVO> CrawlingTopList(CrawVO vo){
+		return mybatis.selectList("CrawlingDao.CrawlingTopList");
+	}
 }
