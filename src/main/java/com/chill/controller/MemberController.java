@@ -2,12 +2,15 @@ package com.chill.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,16 +19,20 @@ import com.chill.domain.MemberVO;
 import com.chill.service.MemberService;
 
 @Controller
-@RequestMapping("/user")
 public class MemberController {
 	
-	@RequestMapping("/{url}.do")
+	@RequestMapping("{url}.do")
 	public String regist(@PathVariable String url) {
 		return "/user/"+url;
-	}	//WEB-INF/views/  + user/userJoin +url + .jsp
+	}	//webapp/resources/cozastore-master  + user/userJoin +url + .jsp
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping("JoinForm")
+	public String join() {
+		return "/user/JoinForm";
+	}
 	
 	@RequestMapping("/userInsert.do")
 	public ModelAndView insert(MemberVO vo) {

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<a href="crawling/main.do">상품등록</a>
 </body>
 </html>
