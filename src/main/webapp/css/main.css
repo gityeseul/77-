@@ -132,7 +132,49 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     
 }
 
+/*///////////////////06/02/아름수정////////////////////////////////////
+[ Community ]*/
 
+.cleft {
+	float: left;
+    text-align: left;
+    min-width: 80px;
+    font-size: 11px;
+}
+.cleft a {
+	letter-spacing: 1px;
+    background: #fff;
+    border: 1px solid #bbb;
+    color: #4a4a4a;
+    padding: 3px 10px;
+    font-weight: normal;
+    text-align: center;
+    display: inline;
+    margin: 4px 0;
+    -webkit-transition: all 0.2s ease;
+	
+}
+
+.cright {
+	float: right;
+    text-align: right;
+    min-width: 80px;
+    font-size: 11px;
+}
+
+.cright a {
+	letter-spacing: 1px;
+    background: #fff;
+    border: 1px solid #bbb;
+    color: #4a4a4a;
+    padding: 3px 10px;
+    font-weight: normal;
+    text-align: center;
+    display: inline;
+    margin: 4px 0;
+    -webkit-transition: all 0.2s ease;
+	
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ LOADDING ]*/
@@ -2774,6 +2816,10 @@ input.num-product::-webkit-inner-spin-button {
 .bor5 {
   border-left: 1px solid #e5e5e5;
   border-right: 1px solid #e5e5e5;
+}
+
+.bor501 {
+	border-left: 1px solid #e5e5e5;
 }
 
 .bor6 {border-right: 1px solid rgba(255,255,255,0.1);}
